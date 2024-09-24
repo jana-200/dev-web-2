@@ -1,0 +1,13 @@
+
+### Read all movies
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/movies
+
+### Read all filtered
+GET {{baseUrl}}/movies/?minimum-duration=200
+
+### Read one
+GET {{baseUrl}}/movies/2
+
+
+
