@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { Movie } from "../types";
+import { Movie, NewMovie} from "../types";
+import { parse, serialize } from "../utils/json";
+import path from "node:path";
+const jsonDbPath = path.join(__dirname, "/../data/films.json");
+
 
 const movies: Movie[] = [
   {
@@ -47,6 +51,58 @@ router.get("/:id", (req, res) => {
     return res.sendStatus(404);
   }
   return res.json(movie);
+});
+
+router.post("/",(req, res) => { 
+  const body: unknown = req.body;
+  if(
+    !body ||
+    typeof body !== "object" ||
+    !("title" in body) ||
+    !("director" in body) ||
+    !("duration" in body) ||
+    typeof body.title !== "string" ||
+    typeof body.director !== "string" ||
+    typeof body.duration !== "number" ||
+    !body.title.trim() ||
+    !body.director.trim() ||
+    body.duration <= 0
+    ){
+      return res.status(400);
+    }
+
+  // Vérification des champs optionnels
+  if ("budget" in body && (typeof body.budget !== "number" || body.budget<=0) ) {
+      return res.status(400);
+  }
+
+  if ("description" in body && (typeof body.description !== "string" || !body.description.trim())) {
+      return res.status(400);
+  }
+
+  if ("imageUrl" in body && body.imageUrl !== null && typeof body.imageUrl !== "string" ) {
+      return res.status(400);
+  }
+
+  const { title, director, duration , budget,description,imageUrl } = body as NewMovie;
+  const moviess = parse(jsonDbPath, movies);
+  const nextId = moviess.reduce((maxId, movie) => (movie.id > maxId ? movie.id : maxId), 0) +1;
+
+  const newMovie: Movie = {
+    id: nextId,
+    title,
+    director,
+    duration,
+    budget , 
+    description, 
+    imageUrl,    
+  };
+
+  moviess.push(newMovie);
+
+  serialize(jsonDbPath, moviess);
+
+  return res.json(newMovie);
 });
 
 export default router;

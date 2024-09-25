@@ -10,4 +10,17 @@ GET {{baseUrl}}/movies/?minimum-duration=200
 GET {{baseUrl}}/movies/2
 
 
+### Create one 
+POST {{baseUrl}}/movies
+Content-Type: application/json
 
+{ 
+    
+  "title" : "idk",
+  "director" : "idk",
+  "duration" : 200,
+  "budget" : 35000,
+  "description" : "idk",
+  "imageUrl" : null
+}
+    
