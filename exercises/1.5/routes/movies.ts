@@ -1,9 +1,5 @@
 import { Router } from "express";
 import { Movie, NewMovie} from "../types";
-import { parse, serialize } from "../utils/json";
-import path from "node:path";
-const jsonDbPath = path.join(__dirname, "/../data/films.json");
-
 
 const movies: Movie[] = [
   {
@@ -85,8 +81,12 @@ router.post("/",(req, res) => {
   }
 
   const { title, director, duration , budget,description,imageUrl } = body as NewMovie;
-  const moviess = parse(jsonDbPath, movies);
-  const nextId = moviess.reduce((maxId, movie) => (movie.id > maxId ? movie.id : maxId), 0) +1;
+  
+  const exist = movies.find((movie) => movie.title === title && movie.director === director);
+  if (exist) {
+    return res.status(409).json();
+  }
+  const nextId = movies.reduce((maxId, movie) => (movie.id > maxId ? movie.id : maxId), 0) +1;
 
   const newMovie: Movie = {
     id: nextId,
@@ -97,10 +97,8 @@ router.post("/",(req, res) => {
     description, 
     imageUrl,    
   };
-
-  moviess.push(newMovie);
-
-  serialize(jsonDbPath, moviess);
+  
+  movies.push(newMovie);
 
   return res.json(newMovie);
 });

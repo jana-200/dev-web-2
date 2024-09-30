@@ -16,8 +16,8 @@ Content-Type: application/json
 
 { 
     
-  "title" : "idk",
-  "director" : "idk",
+  "title" : "hey",
+  "director" : "me",
   "duration" : 200,
   "budget" : 35000,
   "description" : "idk",
