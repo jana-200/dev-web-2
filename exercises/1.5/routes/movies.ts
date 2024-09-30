@@ -68,20 +68,20 @@ router.post("/",(req, res) => {
     !body.director.trim() ||
     body.duration <= 0
     ){
-      return res.status(400);
+      return res.sendStatus(400);
     }
 
   // Vérification des champs optionnels
   if ("budget" in body && (typeof body.budget !== "number" || body.budget<=0) ) {
-      return res.status(400);
+      return res.sendStatus(400);
   }
 
   if ("description" in body && (typeof body.description !== "string" || !body.description.trim())) {
-      return res.status(400);
+      return res.sendStatus(400);
   }
 
   if ("imageUrl" in body && body.imageUrl !== null && typeof body.imageUrl !== "string" ) {
-      return res.status(400);
+      return res.sendStatus(400);
   }
 
   const { title, director, duration , budget,description,imageUrl } = body as NewMovie;
