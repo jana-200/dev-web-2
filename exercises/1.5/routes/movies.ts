@@ -7,7 +7,7 @@ const movies: Movie[] = [
    title: "hey",
    director: "me",
    duration: 230,
-   description:"nsm"
+   description:"wtffffffffffffff"
   },
   {
     id: 2,
