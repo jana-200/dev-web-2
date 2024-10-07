@@ -23,4 +23,18 @@ Content-Type: application/json
   "description" : "idk",
   "imageUrl" : null
 }
+
+### PUT one 
+PUT {{baseUrl}}/movies/66
+Content-Type: application/json
+
+{ 
+    
+  "title" : "idk",
+  "director" : "idk",
+  "duration" : 200,
+  "budget" : 35000,
+  "description" : "idk",
+  "imageUrl" : null
+}
     

@@ -1,5 +1,8 @@
 import { Router } from "express";
 import { Movie, NewMovie} from "../types";
+import path from "node:path";
+import { parse, serialize } from "../utils/json";
+const jsonDbPath = path.join(__dirname, "/../data/movies.json");
 
 const movies: Movie[] = [
   {
@@ -84,7 +87,7 @@ router.post("/",(req, res) => {
   
   const exist = movies.find((movie) => movie.title === title && movie.director === director);
   if (exist) {
-    return res.status(409).json();
+    return res.sendStatus(409).json();
   }
   const nextId = movies.reduce((maxId, movie) => (movie.id > maxId ? movie.id : maxId), 0) +1;
 
@@ -102,5 +105,112 @@ router.post("/",(req, res) => {
 
   return res.json(newMovie);
 });
+
+
+router.delete("/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const index = movies.findIndex((movie) => movie.id === id);
+  if (index === -1) {
+    return res.sendStatus(404);
+  }
+  const deletedElements = movies.splice(index, 1); // splice() returns an array of the deleted elements
+  return res.json(deletedElements[0]);
+});
+
+
+router.patch("/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const film = movies.find((movie) => movie.id === id);
+  if (!film) {
+    return res.sendStatus(404);
+  }
+
+  const body: unknown = req.body;
+
+  if (
+    !body ||
+    typeof body !== "object" ||
+    ("title" in body && (typeof body.title !== "string" || !body.title.trim())) ||
+    ("description" in body && (typeof body.description !== "string" || !body.description.trim()))
+  ) {
+    return res.sendStatus(400);
+  }
+
+  const { title,description }: Partial<NewMovie> = body;
+
+  if (title) {
+    film.title = title;
+  }
+  if (description) {
+    film.description = description;
+  }
+  
+
+  return res.json(film);
+});
+
+router.put("/:id", (req, res) => {
+  const id =Number(req.params.id);
+  const body : unknown = req.body;
+
+  if(
+    !body ||
+    typeof body !== "object" ||
+    !("title" in body) ||
+    !("director" in body) ||
+    !("duration" in body) ||
+    typeof body.title !== "string" ||
+    typeof body.director !== "string" ||
+    typeof body.duration !== "number" ||
+    !body.title.trim() ||
+    !body.director.trim() ||
+    body.duration <= 0
+    ){
+      return res.sendStatus(400);
+    }
+
+  // Vérification des champs optionnels
+  if ("budget" in body && (typeof body.budget !== "number" || body.budget<=0) ) {
+      return res.sendStatus(400);
+  }
+
+  if ("description" in body && (typeof body.description !== "string" || !body.description.trim())) {
+      return res.sendStatus(400);
+  }
+
+  if ("imageUrl" in body && body.imageUrl !== null && typeof body.imageUrl !== "string" ) {
+      return res.sendStatus(400);
+  }
+
+  const {title,director,duration, budget, description, imageUrl} = body as NewMovie;
+  const filmExist = movies.find(movie =>movie.id===id); // recherche d'un film existant avec l'ID donné
+
+  if(filmExist){ // si le film existe, on met à jour ses propriétés avec les nouvelles données 
+      filmExist.title=title;
+      filmExist.director=director;
+      filmExist.duration=duration;
+      filmExist.budget=budget;
+      filmExist.description=description;
+      filmExist.imageUrl=imageUrl;
+
+      return res.json(filmExist);
+  }
+
+  const nextId = movies.reduce((maxId, movie) => (movie.id > maxId ? movie.id : maxId), 0) +1; //si le film n'existe pas on génére un nouvel ID
+
+  const newFilm : Movie={ //on créé un nouveau film
+      id:nextId,
+      title,
+      director,
+      duration,
+      budget,
+      description,
+      imageUrl,
+  };
+  movies.push(newFilm);
+  return res.status(201).json(newFilm);
+});
+
+
 
 export default router;
