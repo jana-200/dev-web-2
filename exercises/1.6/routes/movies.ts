@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { Movie, NewMovie} from "../types";
 
+
 const movies: Movie[] = [
   {
    id: 1,
