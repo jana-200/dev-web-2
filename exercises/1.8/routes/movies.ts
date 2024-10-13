@@ -95,7 +95,6 @@ router.patch("/:id", (req, res) => {
   }
 
   const { title,director, description,duration, budget, imageUrl }: Partial<NewMovie> = body;
-
   const updatedMovie= updateOneMovie(id,{title,director, description,duration, budget, imageUrl});
 
   if (!updatedMovie) {
@@ -105,7 +104,7 @@ router.patch("/:id", (req, res) => {
   return res.json(updatedMovie);
 });
 
-/*router.put("/:id", (req, res) => {
+router.put("/:id", (req, res) => {
   const id =Number(req.params.id);
   const body : unknown = req.body;
 
@@ -139,37 +138,17 @@ router.patch("/:id", (req, res) => {
   }
 
   const {title,director,duration, budget, description, imageUrl} = body as NewMovie;
-  const films= parse(jsonDbPath, movies);
-  const filmExist = films.find(movie =>movie.id===id); // recherche d'un film existant avec l'ID donné
+  let updatedMovie= updateOneMovie(id,{title,director, description,duration, budget, imageUrl});
 
-  if(filmExist){ // si le film existe, on met à jour ses propriétés avec les nouvelles données 
-      filmExist.title=title;
-      filmExist.director=director;
-      filmExist.duration=duration;
-      filmExist.budget=budget;
-      filmExist.description=description;
-      filmExist.imageUrl=imageUrl;
+  if (!updatedMovie) {
 
-      return res.json(filmExist);
+    updatedMovie=createOneMovie({title,director, description,duration, budget, imageUrl});
+
   }
-
-  const nextId = films.reduce((maxId, movie) => (movie.id > maxId ? movie.id : maxId), 0) +1; //si le film n'existe pas on génére un nouvel ID
-
-  const newFilm : Movie={ //on créé un nouveau film
-      id:nextId,
-      title,
-      director,
-      duration,
-      budget,
-      description,
-      imageUrl,
-  };
-
-  films.push(newFilm);
-  serialize(jsonDbPath, films);
-  return res.status(201).json(newFilm);
+  
+  return res.json(updatedMovie);
 });
-*/
+
 
 
 export default router;
