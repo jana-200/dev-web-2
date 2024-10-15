@@ -1,35 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+// Define the type for the props of the Cinema component
+type CinemaProps = {
+  name: string;
+  movie1 :{ 
+    title: string,
+    director: string
+  },
+  movie2 :{ 
+    title: string,
+    director: string
+  },
+  
 }
 
-export default App
+type PageTitleProps  = {
+  title: string;
+}
+
+// Component for displaying the page title
+const PageTitle = (props : PageTitleProps) => <h1>{props.title}</h1>;
+
+// Component for displaying cinema information
+const Cinema = (props :CinemaProps ) => (
+  <div>
+    <h2>{props.name}</h2>
+    <ul>
+      <li>
+        <strong>{props.movie1.title}</strong> - Réalisateur : {props.movie1.director}
+      </li>
+      <li>
+        <strong>{props.movie2.title}</strong> - Réalisateur : {props.movie2.director}
+      </li>
+    </ul>
+  </div>
+);
+
+const App = () => {
+  const pageTitle = "Informations sur les films dans les cinémas";
+
+  const cinema1Name = "UGC DeBrouckère";
+
+  const movie1 = {
+    title: "HAIKYU-THE DUMPSTER BATTLE",
+    director: "Susumu Mitsunaka",
+  };
+  const movie2 = {
+    title: "GOODBYE JULIA ",
+    director: "Mohamed Kordofani",
+  };
+
+  const cinema2Name = "UGC Toison d'Or";
+  const movie3 = {
+    title: "THE WATCHERS",
+    director: "Ishana Night Shyamalan",
+  };
+  const movie4 = {
+    title: "BAD BOYS: RIDE OR DIE",
+    director: "Adil El Arbi, Bilall Fallah",
+  };
+
+  return (
+    <div>
+      <PageTitle title={pageTitle} />
+
+      <Cinema name={cinema1Name} movie1={movie1} movie2={movie2} />
+
+      <Cinema name={cinema2Name} movie1={movie3} movie2={movie4} />
+    </div>
+  );
+};
+
+export default App;
+
