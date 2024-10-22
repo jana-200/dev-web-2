@@ -1,4 +1,3 @@
-import "./PageTitle.css";
 
 export interface PageTitleProps { 
     title: string;
@@ -6,8 +5,8 @@ export interface PageTitleProps {
 
 export const PageTitle= ( {title} : PageTitleProps) => { 
     return ( 
-        <h2>
+        <h1>
             {title}
-        </h2>
+        </h1>
     );
 }

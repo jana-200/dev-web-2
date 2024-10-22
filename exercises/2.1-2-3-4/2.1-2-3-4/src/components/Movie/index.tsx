@@ -1,4 +1,3 @@
-import './Movie.css';
 
 export interface Movie {
   title: string;
