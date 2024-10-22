@@ -9,10 +9,8 @@ export const Cinema = ({ name, movies }: CinemaProps) => {
     <div>
       <h3>{name}</h3>
       <ul>
-        {movies.map((movie, index) => (
-          <li key={index}>
-            <strong>{movie.title}</strong> - réalisateur : {movie.director}
-          </li>
+        {movies.map((movie) => (
+          <Movie title={movie.title} director={movie.director} description={movie.description} />
         ))}
       </ul>
     </div>
