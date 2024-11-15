@@ -12,11 +12,3 @@ div {
   align-items: center;         /* Centre les cases verticalement si la hauteur du conteneur est définie */
 }
 
-.rose { 
-  border: 1px solid rgb(151, 64, 64);      /* Bordure de la boîte */
-  border-radius: 10px;         /* Arrondit les coins à 10px */
-  padding: 10px;               /* Ajoute un espacement interne */
-  width: 500px;                /* Largeur de la case */
-  height: 300px;               /* Hauteur de la case */
-  background-color: rgb(151, 64, 64); /* Affiche le texte en vert */          
-}
