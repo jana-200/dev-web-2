@@ -1,4 +1,5 @@
 interface Movie {
+    id:number
     title: string;
     director: string;
     duration?: number;
@@ -7,5 +8,12 @@ interface Movie {
     budget? : number;
 }
 
-export type { Movie };
+type NewMovie = Omit<Movie, "id">;
+
+interface MovieContext{
+    movies: Movie[];
+    onMovieAdded: (newMovie: NewMovie) => void;
+
+}
+export type { Movie, MovieContext,NewMovie };
   
