@@ -92,7 +92,7 @@ const Main = () => {
 
   return (
     <main>
-      <p>My HomePage</p>
+      <p>Mes films préf </p>
       
       <Movies movies={movies} />
 
