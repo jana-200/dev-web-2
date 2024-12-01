@@ -7,10 +7,10 @@ const HomePage = () => {
 
     return (
         <div>
-            <h4>Welcome to the Home Page</h4>
+            <h3>Welcome to the Home Page</h3>
             <p>This is the homepage of our application.</p>
             <br />
-            <h5>My favorite movies :</h5>
+            <h4>My favorite movies :</h4>
             <MovieTitleList movies={movies} />
         </div>
     );

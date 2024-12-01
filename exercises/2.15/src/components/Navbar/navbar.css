@@ -1,0 +1,21 @@
+.navbar {
+    display: flex;
+    justify-content: space-around; /* Espacement uniforme entre les boutons */
+    align-items: center;
+    padding: 10px;
+    background-color: #333; /* Ajoute un fond sombre élégant */
+
+}
+
+.button {
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Réduction de la taille pour un look compact */
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px; /* Taille légèrement réduite */
+    border-radius: 6px; /* Coins arrondis pour un style moderne */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animations douces */
+    font-family: 'Arial', sans-serif; /* Police simple et professionnelle */
+}

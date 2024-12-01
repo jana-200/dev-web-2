@@ -1,0 +1,51 @@
+/* Conteneur principal de la carte */
+.movie-list {
+    display: flex !important;
+    justify-content: center !important; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    margin: 0; /* Supprime les marges éventuelles */
+    padding: 30px;
+    width: 150%;
+    max-width: 600px;
+}
+
+
+.movie-card {
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 12px; /* Coins arrondis */
+    padding: 32px; /* Plus d'espace à l'intérieur */
+    max-width: 600px; /* Largeur maximale */
+    width: 100%; /* S'adapte à la taille de l'écran */
+    background-color: white; /* Fond blanc */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px; /* Espacement entre les éléments internes */
+}
+
+/* Style de l'image de l'affiche */
+.movie-poster img {
+    width: 100% !important; /* Forcer à utiliser toute la largeur disponible */
+    max-width: 500px !important; /* Taille maximale élargie */
+    height: auto !important; /* Préserver les proportions */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre discrète */
+}
+/* Détails du film */
+.movie-details {
+    text-align: center;
+    width: 100%; /* S'aligne avec la largeur de la carte */
+}
+
+.movie-details h3 {
+    font-size: 28px; /* Texte plus grand pour le titre */
+    margin: 10px 0;
+    color: #333; /* Couleur sombre */
+}
+
+.movie-details p {
+    font-size: 18px; /* Texte plus grand pour la description */
+    margin: 5px 0;
+    color: #555; /* Texte gris doux */
+}
