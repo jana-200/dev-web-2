@@ -9,7 +9,7 @@ const defaultMovies: Movie[] = [
      title: "hey",
      director: "me",
      duration: 230,
-     description:"wtffffffffffffff"
+     description:"this is a movie",
     },
     {
       id: 2,
