@@ -53,13 +53,13 @@ router.post("/",(req, res) => {
       return res.sendStatus(400);
   }
 
-  if ("imageUrl" in body && body.imageUrl !== null && typeof body.imageUrl !== "string" ) {
+  if ("image_url" in body && body.image_url !== null && typeof body.image_url !== "string" ) {
       return res.sendStatus(400);
   }
 
-  const { title, director, duration , budget,description,imageUrl } = body as NewMovie;
+  const { title, director, duration , budget,description,image_url } = body as NewMovie;
 
-  const newMovie= createOneMovie({title, director, duration , budget,description,imageUrl});
+  const newMovie= createOneMovie({title, director, duration , budget,description,image_url});
 
   return res.json(newMovie);
 });
@@ -88,14 +88,14 @@ router.patch("/:id", (req, res) => {
     ("director" in body && (typeof body.director !== "string" || !body.director.trim())) ||
     ("duration" in body && (typeof body.duration !== "string" || !body.duration.trim())) ||
     ("budget" in body && (typeof body.budget !== "string" || !body.budget.trim())) ||
-    ("imageUrl" in body && (typeof body.imageUrl !== "string" || !body.imageUrl.trim()))
+    ("image_url" in body && (typeof body.image_url !== "string" || !body.image_url.trim()))
 
   ) {
     return res.sendStatus(400);
   }
 
-  const { title,director, description,duration, budget, imageUrl }: Partial<NewMovie> = body;
-  const updatedMovie= updateOneMovie(id,{title,director, description,duration, budget, imageUrl});
+  const { title,director, description,duration, budget, image_url }: Partial<NewMovie> = body;
+  const updatedMovie= updateOneMovie(id,{title,director, description,duration, budget, image_url});
 
   if (!updatedMovie) {
     return res.sendStatus(404);
@@ -133,16 +133,16 @@ router.put("/:id", (req, res) => {
       return res.sendStatus(400);
   }
 
-  if ("imageUrl" in body && body.imageUrl !== null && typeof body.imageUrl !== "string" ) {
+  if ("image_url" in body && body.image_url !== null && typeof body.image_url !== "string" ) {
       return res.sendStatus(400);
   }
 
-  const {title,director,duration, budget, description, imageUrl} = body as NewMovie;
-  let updatedMovie= updateOneMovie(id,{title,director, description,duration, budget, imageUrl});
+  const {title,director,duration, budget, description, image_url} = body as NewMovie;
+  let updatedMovie= updateOneMovie(id,{title,director, description,duration, budget, image_url});
 
   if (!updatedMovie) {
 
-    updatedMovie=createOneMovie({title,director, description,duration, budget, imageUrl});
+    updatedMovie=createOneMovie({title,director, description,duration, budget, image_url});
 
   }
   

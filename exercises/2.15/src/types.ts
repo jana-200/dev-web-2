@@ -13,7 +13,7 @@ type NewMovie = Omit<Movie, "id">;
 interface MovieContext{
     movies: Movie[];
     onMovieAdded: (newMovie: NewMovie) => void;
-
+    
 }
 export type { Movie, MovieContext,NewMovie };
   

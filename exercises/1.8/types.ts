@@ -5,7 +5,7 @@ interface Movie {
   duration: number;
   budget? : number,
   description?: string,
-  imageUrl?:string,
+  image_url?:string,
 }
 
 interface MovieToUpdate {

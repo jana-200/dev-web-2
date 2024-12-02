@@ -4,28 +4,48 @@ import { parse, serialize } from "../utils/json";
 const jsonDbPath = path.join(__dirname, "/../data/movies.json");
 
 const defaultMovies: Movie[] = [
-    {
-     id: 1,
-     title: "hey",
-     director: "me",
-     duration: 230,
-     description:"this is a movie",
-    },
-    {
-      id: 2,
-      title: "yo",
-      director: "me",
-      duration: 220,
-      imageUrl: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  
-     },
-     {
-      id: 3,
-      title: "hello",
-      director: "me",
-      duration: 210,
-      budget:2555555555,
-     }
+  {
+    id: 1,
+    title: "Jujustu Kaisen",
+    director: "Sunghoo Park",
+    duration: 111,
+    image_url: "https://th.bing.com/th/id/OIP.UoT3wKa8uReaf0KBuoyTrAHaD5?rs=1&pid=ImgDetMain"
+  },
+  {
+    id: 2,
+    title: "delico's nursery",
+    director: "Yūya Ishii",
+    duration: 111,
+    image_url: "https://animenew.com.br/wp-content/uploads/2024/03/Delicos-Nursery-estreia-em-julho-Assista-ao-trailer-860x484.webp"
+  },
+  {
+    id: 3,
+    title: "one piece",
+    director: "Tatsuya Nagamine",
+    duration: 111,
+    image_url: "https://simkl.in/fanart/11/11354962a7617ba7d1_w.jpg"
+  },
+  {
+    id: 4,
+    title: "Violet evergardern",
+    director: "Taichi Ishidate",
+    duration: 111,
+    image_url: "https://th.bing.com/th/id/OIP.d8ofTo-d5voUwGr0DEKBxgHaEK?rs=1&pid=ImgDetMain"
+  },
+  {
+    id: 5,
+    title: "gakuen babysitters",
+    director: "Shūsei Morishita",
+    duration: 111,
+    image_url: "https://wallpapercave.com/wp/wp4779242.jpg"
+  },
+  {
+    id: 6,
+    title: "sugar apple fairy tale",
+    director: "Yūya Ishii",
+    duration: 111,
+    image_url: "https://wallpapercave.com/wp/wp12073172.jpg"
+  },
   ];
 
   function readAllMovies(minDuration: number): Movie[] {
@@ -100,8 +120,8 @@ const defaultMovies: Movie[] = [
     if (newMovie.description !== undefined) {
         movie.description = newMovie.description!;
     }
-    if (newMovie.imageUrl !== undefined) {
-        movie.imageUrl = newMovie.imageUrl!;
+    if (newMovie.image_url !== undefined) {
+        movie.image_url = newMovie.image_url!;
     }
   
     serialize(jsonDbPath, movies);
