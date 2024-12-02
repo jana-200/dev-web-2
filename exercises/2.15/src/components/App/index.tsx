@@ -7,25 +7,10 @@ import './App.css';
 import { useEffect, useState } from "react";
 
 
-
 const App = () => {
 
   const [movies, setMovies] = useState<Movie[]>([]);
   const navigate = useNavigate();
-
-  
-
-  const fetchMovies = async () =>{
-    try {
-      const movies = await getAllMovies();
-      setMovies(movies);
-    } catch (err) {
-      console.error("HomePage::error: ", err);
-    }
-  }
-  useEffect(()=>{ 
-    fetchMovies();
-  },[]);
 
   async function getAllMovies() {
     try {
@@ -45,38 +30,58 @@ const App = () => {
     }
   }
 
+  const fetchMovies = async () =>{
+    try {
+      const movies = await getAllMovies();
+      setMovies(movies);
+    } catch (err) {
+      console.error("HomePage::error: ", err);
+    }
+  }
+  useEffect(()=>{ 
+    fetchMovies();
+  },[]);
 
-  const onMovieAdded = async (newMovie: NewMovie) => {
-    const nextId = Math.max(...movies.map((movie) => movie.id)) + 1;
-    const movieToBeAdded = { id: nextId, ...newMovie };
 
-    try{ 
-      const options = {
+
+  const addMovie = async (newMovie: NewMovie): Promise<Movie> => {
+    try {
+      const response = await fetch("/api/movies", {
         method: "POST",
-        body: JSON.stringify(movieToBeAdded),
-        headers: {
-          "Content-Type": "application/json",
-        },
-    }
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newMovie),
+      });
 
-    const response = await fetch('/api/movies', options);
-  
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+      if (!response.ok)
+        throw new Error(
+          `fetch error : ${response.status} : ${response.statusText}`
+        );
+
+      const addedMovie = await response.json();
+
+      return addedMovie;
+    } catch (err) {
+      console.error("addMovie::error: ", err);
+      throw err;
     }
-  
-    const addedMovie = await response.json();
-    setMovies([...movies, addedMovie]);
-    navigate("/movie_list");
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
+  }
+
+
+  const oneMovieAdded = async (newMovie: NewMovie) => {
+    try{ 
+      const addedMovie = await addMovie(newMovie);
+      console.log("Movie added:", addedMovie);
+      await fetchMovies();
+      navigate("/movie-list");
+      }catch (error) {
+      console.error( error);
     }
   };
 
   const movieContext: MovieContext = {
     movies,
-    onMovieAdded,
-  
+    oneMovieAdded,
+    
   };
 
   return (
