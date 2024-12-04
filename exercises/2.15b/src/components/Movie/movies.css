@@ -1,0 +1,51 @@
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  margin-left: 30px;
+
+}
+
+.movie-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-poster img {
+  border-radius: 4px;
+}
+
+.movie-details {
+  text-align: center;
+}
+
+.movie-details h3 {
+  margin: 10px 0;
+}
+
+.movie-details p {
+  margin: 5px 0;
+}
+
+.delete-button {
+  background-color: #333; 
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Effet au survol */
+.delete-button:hover {
+  background-color: #4f4e4e; /* Couleur plus foncée au survol */
+}

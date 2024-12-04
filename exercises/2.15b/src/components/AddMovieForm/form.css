@@ -1,0 +1,58 @@
+form {
+    background-color: #ffffff; /* Fond blanc */
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permet de regrouper les champs sur plusieurs lignes */
+    gap: 20px; /* Espacement entre les éléments */
+  }
+  
+  form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333333;
+  }
+  
+  .field-group {
+    display: flex;
+    flex: 1 1 calc(50% - 20px); /* Occupe 50% de la ligne avec un espace entre les champs */
+    flex-direction: column;
+    min-width: 250px; /* Assure une largeur minimale pour les petits écrans */
+  }
+  
+  form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  
+  form input:focus {
+    border-color: #333;
+    outline: none;
+    box-shadow: 0 0 5px #333(0, 123, 255, 0.5);
+  }
+  
+  form button {
+    background-color: #333; /* Couleur bleue pour le bouton */
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  form button:hover {
+    background-color: #4f4e4e; /* Couleur plus foncée au survol */
+  }
+  
