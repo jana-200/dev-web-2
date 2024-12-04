@@ -7,112 +7,78 @@ interface AddMovieFormProps {
   }
 
 const AddMovieForm = ({ onMovieAdded }: AddMovieFormProps) => {
-    const [title, setTitle] = useState("");
-    const [director, setDirector] = useState("");
-    const [duration, setDuration] = useState(0);
-    const [image_url, setImageUrl] = useState("");
-    const [description, setDescription] = useState("");
-    const [budget, setBudget] = useState(0);
+  const [title, setTitle] = useState("");
+  const [director, setDirector] = useState("");
+  const [duration, setDuration] = useState<number | undefined>(undefined);
+  const [image_url, setImageUrl] = useState<string | undefined>(undefined);
+  const [description, setDescription] = useState<string | undefined>(undefined);
+  const [budget, setBudget] = useState<number | undefined>(undefined);
   
-    const handleSubmit = (e: SyntheticEvent) => {
-      e.preventDefault();
-      onMovieAdded({title, director, duration, image_url, description, budget });
-
-    };
+  const handleSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+    onMovieAdded({
+      title,
+      director,
+      duration: duration ?? 0,
+      image_url,
+      description,
+      budget,
+    });
+  };
   
-    const handleTitleChange = (e: SyntheticEvent) => {
-      const titleInput = e.target as HTMLInputElement;
-      setTitle(titleInput.value);
-    };
-  
-    const handleDirectorChange = (e: SyntheticEvent) => {
-      const directorInput = e.target as HTMLInputElement;
-      setDirector(directorInput.value);
-    };
-  
-    const handleDurationChange = (e: SyntheticEvent) => {
-      const durationInput = e.target as HTMLInputElement;
-      setDuration(parseInt(durationInput.value));
-    };
-    const handleImageChange = (e: SyntheticEvent) => {
-      const imageInput = e.target as HTMLInputElement;
-      setImageUrl(imageInput.value);
-    };
-  
-    const handleDescriptionChange = (e: SyntheticEvent) => {
-      const descriptionInput = e.target as HTMLInputElement;
-      setDescription(descriptionInput.value);
-    };
-    
-    const handleBudgetChange = (e: SyntheticEvent) => {
-      const budgetInput = e.target as HTMLInputElement;
-      setBudget(parseInt(budgetInput.value));
-    };
     return (
       <div>
         <br />
         <form onSubmit={handleSubmit}>
           <div className="field-group">
-            <label htmlFor="title">Title</label>
+            <label>Title</label>
             <input
               value={title}
               type="text"
-              id="title"
-              name="title"
-              onChange={handleTitleChange}
+              onChange={(e)=> setTitle(e.target.value)}
               required
             />
           </div>
           <div className="field-group">
-            <label htmlFor="director">Director</label>
+            <label>Director</label>
             <input
               value={director}
               type="text"
-              id="director"
-              name="director"
-              onChange={handleDirectorChange}
+              onChange={(e)=> setDirector(e.target.value)}
               required
             />
           </div>
           <div className="field-group">
-            <label htmlFor="duration">Duration</label>
+            <label>Duration</label>
             <input
-              value={duration}
+              value={duration ?? ""}
               type="number"
-              id="duration"
-              name="duration"
-              onChange={handleDurationChange}
+              onChange={(e)=> setDuration(parseInt(e.target.value))}
               required
             />
           </div>
           <div className="field-group">
-            <label htmlFor="image">Image URL</label>
+            <label>Image URL</label>
             <input
               value={image_url}
               type="text"
-              id="image"
-              name="image"
-              onChange={handleImageChange}
+              onChange={(e)=> setImageUrl(e.target.value)}
             />
           </div>
           <div className="field-group">
-            <label htmlFor="description">Description</label>
+            <label>Description</label>
             <input
               value={description}
               type="text"
-              id="description"
-              name="description"
-              onChange={handleDescriptionChange}
+              onChange={(e)=> setDescription(e.target.value)}
             />
           </div>
           <div className="field-group">
-            <label htmlFor="budget">Budget</label>
+            <label>Budget</label>
             <input
-              value={budget}
+              value={budget ?? ""}
               type="number"
-              id="budget"
-              name="budget"
-              onChange={handleBudgetChange}
+              onChange={(e)=> setBudget(parseInt(e.target.value))}
             />
           </div>
           <button type="submit">Ajouter</button>

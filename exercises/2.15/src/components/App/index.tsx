@@ -25,7 +25,7 @@ const App = () => {
 
       return movies;
     } catch (err) {
-      console.error("getAllMovies::error: ", err);
+      console.error(err);
       throw err;
     }
   }
@@ -35,7 +35,7 @@ const App = () => {
       const movies = await getAllMovies();
       setMovies(movies);
     } catch (err) {
-      console.error("HomePage::error: ", err);
+      console.error( err);
     }
   }
   useEffect(()=>{ 
@@ -46,41 +46,43 @@ const App = () => {
 
   const addMovie = async (newMovie: NewMovie): Promise<Movie> => {
     try {
+      console.log("Adding new movie:", newMovie);
+  
       const response = await fetch("/api/movies", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newMovie),
       });
-
-      if (!response.ok)
-        throw new Error(
-          `fetch error : ${response.status} : ${response.statusText}`
-        );
-
+  
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(`API Error: ${response.status} - ${errorMessage}`);
+      }
+  
       const addedMovie = await response.json();
+      console.log("Successfully added movie:", addedMovie);
 
       return addedMovie;
     } catch (err) {
-      console.error("addMovie::error: ", err);
+      console.error("Error in addMovie:", err);
       throw err;
     }
-  }
+  };
 
 
-  const oneMovieAdded = async (newMovie: NewMovie) => {
+  const onMovieAdded = async (newMovie: NewMovie) => {
     try{ 
-      const addedMovie = await addMovie(newMovie);
-      console.log("Movie added:", addedMovie);
-      await fetchMovies();
-      navigate("/movie-list");
+      const addedMovie=await addMovie(newMovie);
+      setMovies((prevMovies) => [...prevMovies, addedMovie]);
+      navigate("/movie_list", { replace: true });
       }catch (error) {
-      console.error( error);
+      console.error(error);
     }
   };
 
   const movieContext: MovieContext = {
     movies,
-    oneMovieAdded,
+    onMovieAdded,
     
   };
 
