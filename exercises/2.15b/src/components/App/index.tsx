@@ -102,8 +102,7 @@ const App = () => {
   const onMovieDeleted = async (movie:Movie) => { 
     try {
       await deleteMovie(movie);
-      const updatedMovies = movies.filter((m) => m.id !== movie.id);
-      setMovies(updatedMovies);
+      await fetchMovies();
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);
