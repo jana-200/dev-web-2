@@ -2,8 +2,9 @@ import express, { ErrorRequestHandler } from "express";
 import cors from "cors";
 
 import usersRouter from "./routes/users";
-import pizzaRouter from "./routes/pizzas";
-import drinkRouter from "./routes/drinks";
+import moviesRouter from "./routes/movies";
+import commentsRouter from "./routes/comments";
+
 import authsRouter from "./routes/auths";
 
 
@@ -27,8 +28,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/users", usersRouter);
-app.use("/pizzas", pizzaRouter);
-app.use("/drinks", drinkRouter);
+app.use("/movies", moviesRouter);
+app.use("/comments", commentsRouter);
 app.use("/auths", authsRouter);
 
 

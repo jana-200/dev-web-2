@@ -1,27 +1,22 @@
 import { Request } from "express";
 
-interface Pizza {
+interface Movie {
   id: number;
   title: string;
-  content: string;
+  director: string;
+  duration: number;
+  budget? : number,
+  description?: string,
+  image_url?:string,
 }
 
-interface PizzaToUpdate {
+interface MovieToUpdate {
   title?: string;
-  content?: string;
+  description?: string;
 }
 
-type NewPizza = Omit<Pizza, "id">;
+type NewMovie = Omit<Movie, "id">;
 
-interface Drink {
-  id: number;
-  title: string;
-  image: string;
-  volume: number;
-  price: number;
-}
-
-type NewDrink = Omit<Drink, "id">;
 
 interface AuthenticatedUser {
   username: string;
@@ -46,15 +41,20 @@ interface JwtPayload {
   iat: number; // Issued at time (in seconds since the epoch)
 }
 
+interface Comment {
+  movieId: number;
+  username: string;
+  comment: string;
+}
+
 export type {
-  Pizza,
-  NewPizza,
-  PizzaToUpdate,
-  Drink,
-  NewDrink,
+  Movie, 
+  NewMovie,
+  MovieToUpdate,
   AuthenticatedUser,
   User,
   PotentialUser,
   AuthenticatedRequest,
   JwtPayload,
+  Comment,
 };
