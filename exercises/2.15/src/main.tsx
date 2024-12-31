@@ -13,7 +13,7 @@ import MoviePage from "./components/pages/MoviePage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <App/>,
     children: [
       {
         path: "",

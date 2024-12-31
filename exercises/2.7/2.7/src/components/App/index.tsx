@@ -1,5 +1,5 @@
 import {  SyntheticEvent, useState } from "react";
-import "./Main.css";
+import "./main.css";
 import Movies from "./movies";
 import { Movie } from "../../types";
 

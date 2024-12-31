@@ -16,6 +16,6 @@ const MoviePage = () => {
     return (
         <MovieCard movie={movieFound} onMovieDeleted={onMovieDeleted} />
     );
-    };
+};
 
 export default MoviePage;
