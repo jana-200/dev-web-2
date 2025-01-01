@@ -7,6 +7,7 @@ import {
   deleteOneMovie,
   updateOneMovie,
 }from "../services/movies";
+import { authorize } from "../utils/auths";
 
 const router = Router();
 
@@ -26,7 +27,7 @@ router.get("/:id", (req, res) => {
   return res.json(movie);
 });
 
-router.post("/",(req, res) => { 
+router.post("/",authorize,(req, res) => { 
   const body: unknown = req.body;
   if(
     !body ||
@@ -65,7 +66,7 @@ router.post("/",(req, res) => {
 });
 
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id",authorize, (req, res) => {
   const id = Number(req.params.id);
   const film = deleteOneMovie(id);
   if (!film) {
@@ -75,7 +76,7 @@ router.delete("/:id", (req, res) => {
 });
 
 
-router.patch("/:id", (req, res) => {
+router.patch("/:id", authorize,(req, res) => {
   const id = Number(req.params.id);
 
   const body: unknown = req.body;
@@ -104,7 +105,7 @@ router.patch("/:id", (req, res) => {
   return res.json(updatedMovie);
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", authorize,(req, res) => {
   const id =Number(req.params.id);
   const body : unknown = req.body;
 

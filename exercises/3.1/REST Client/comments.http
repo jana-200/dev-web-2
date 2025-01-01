@@ -62,7 +62,7 @@ Content-Type: application/json
 Authorization: {{admin.response.body.token}}
 
 {
-    "filmId": 1,
+    "movieId": 1,
     "comment": "This is a comment from superadmin"
 }
 
