@@ -11,8 +11,7 @@ const CinemaPage= () => {
       id: 1,
       title: "HAIKYU-THE DUMPSTER BATTLE",
       director: "Susumu Mitsunaka",
-      description:
-        "A high-energy sports anime movie focusing on the intense volleyball rivalry between Karasuno High and their fierce competitors.",
+      description: "A high-energy sports anime movie focusing on the intense volleyball rivalry between Karasuno High and their fierce competitors.",
     },
     {
       id: 2,

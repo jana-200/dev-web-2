@@ -1,0 +1,51 @@
+/* Conteneur global des cartes */
+.book-list {
+    display: flex;
+    flex-wrap: wrap; /* Permet de passer à la ligne si nécessaire */
+    justify-content: center; /* Centre les cartes horizontalement */
+    gap: 20px; /* Espace entre les cartes */
+    padding: 20px; /* Ajoute un peu de marge autour */
+}
+
+h1 {
+    text-align: center; /* Centre le titre */
+}
+
+/* Carte individuelle */
+.book-card {
+    width: 250px; /* Largeur fixe pour toutes les cartes */
+    padding: 20px; /* Espacement interne */
+    background-color: #fff; /* Fond blanc */
+    border: 1px solid #ddd; /* Bordure légère */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    text-align: center; /* Centre le contenu de la carte */
+    font-family: 'Arial', sans-serif; /* Police simple */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation douce au survol */
+}
+
+/* Titre du livre */
+.book-title {
+    font-size: 18px; /* Taille de police pour le titre */
+    font-weight: bold; /* Met en gras */
+    color: #333; /* Couleur sombre */
+    margin-bottom: 15px; /* Espace sous le titre */
+}
+
+/* Bouton de lien */
+.details-button {
+    display: inline-block; /* Bouton en ligne */
+    padding: 10px 15px; /* Espacement interne */
+    font-size: 14px; /* Taille de police */
+    font-weight: bold; /* Texte en gras */
+    color: #fff; /* Texte blanc */
+    background-color: #333; /* Couleur bleue */
+    text-decoration: none; /* Supprime le soulignement */
+    border-radius: 5px; /* Coins arrondis */
+    transition: background-color 0.3s ease; /* Animation au survol */
+}
+
+.details-button:hover {
+    background-color: #1a1a1a; /* Couleur bleue plus foncée au survol */
+    color: #fff; /* Texte blanc */
+}

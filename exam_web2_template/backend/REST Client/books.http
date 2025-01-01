@@ -1,0 +1,36 @@
+@baseUrl = http://localhost:3000
+
+### Login the default admin
+# @name admin
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin"
+}
+
+### read all books
+GET {{baseUrl}}/books
+Authorization: {{admin.response.body.token}}
+
+
+### read a book identified by id
+GET {{baseUrl}}/books/1
+Authorization: {{admin.response.body.token}}
+
+### create a book
+POST {{baseUrl}}/books
+Authorization: {{admin.response.body.token}}
+Content-Type: application/json
+
+{
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": 1960,
+    "cover": "mockingbird.jpg"
+}
+
+### read all books
+GET {{baseUrl}}/books
+

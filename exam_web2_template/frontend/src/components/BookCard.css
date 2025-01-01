@@ -1,0 +1,56 @@
+/* Conteneur global de la carte */
+.book-card {
+    justify-content: center; /* Centre les cartes horizontalement */
+    
+}
+
+
+
+
+/* Image de couverture */
+.book-cover {
+    width: 100%; /* S'adapte à la largeur de la carte */
+    height: auto; /* Garde les proportions de l'image */
+    border-radius: 8px; /* Coins arrondis */
+    margin-bottom: 15px; /* Espace sous l'image */
+}
+
+/* Titre du livre */
+.book-title {
+    font-size: 20px; /* Taille de police pour le titre */
+    font-weight: bold; /* Titre en gras */
+    color: #333; /* Couleur sombre */
+    margin-bottom: 10px; /* Espace sous le titre */
+}
+
+/* Auteur */
+.book-author {
+    font-size: 16px; /* Taille de police pour l'auteur */
+    color: #666; /* Couleur légèrement grise */
+    margin-bottom: 5px; /* Espacement sous l'auteur */
+}
+
+/* Année de publication */
+.book-year {
+    font-size: 14px; /* Taille de police plus petite */
+    color: #999; /* Couleur grise claire */
+    margin-bottom: 20px; /* Espacement sous l'année */
+}
+
+/* Bouton de détails */
+.details-button {
+    display: inline-block; /* Bouton en ligne */
+    padding: 10px 15px; /* Espacement interne */
+    font-size: 14px; /* Taille de police */
+    font-weight: bold; /* Texte en gras */
+    color: #fff; /* Texte blanc */
+    background-color: #007bff; /* Couleur bleue */
+    border: none; /* Supprime les bordures */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur de pointeur */
+    transition: background-color 0.3s ease; /* Animation douce au survol */
+}
+
+.details-button:hover {
+    background-color: #0056b3; /* Couleur bleue plus foncée au survol */
+}
