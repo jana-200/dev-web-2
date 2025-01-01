@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "node:path";
 
+
 /**
  * Parse items given in a .json file
  * @param {String} filePath - path to the .json file
