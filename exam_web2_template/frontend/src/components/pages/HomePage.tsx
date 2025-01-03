@@ -35,7 +35,7 @@ const LoginPage = () => {
       return(
         <div>
           <h2>Home Page </h2>
-          <p>welcom , {authenticatedUser.username}</p>
+          <p>welcome , {authenticatedUser.username}</p>
           <button onClick={() => clearUser()}>Log out</button>
         </div>
       );
