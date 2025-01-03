@@ -10,8 +10,6 @@ const Library = ({ books }: LibraryProps) => {
   return (
     <div> 
 
-      <h1>Library</h1>
-
         <div className="book-list">
         {books.map((book) => (
           <div className="book-card" key={book.id}>

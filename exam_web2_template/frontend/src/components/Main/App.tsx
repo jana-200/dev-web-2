@@ -6,7 +6,6 @@ import { Outlet } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import {
   clearAuthenticatedUser,
-  //getAuthenticatedUser,
   storeAuthenticatedUser,
 } from "../../utils/session";
 
@@ -81,19 +80,19 @@ const App = () => {
   };
 
 
-
   const clearUser = () => {
     clearAuthenticatedUser();
     setAuthenticatedUser(undefined);
   };
 
+  
   const bookContext: BookContext = {
     books: books,
     loginUser,
     authenticatedUser,
     clearUser,
-
   };
+
 
   return (
     <>
@@ -101,7 +100,7 @@ const App = () => {
         <Navbar />
       </Header>
 
-      <Outlet context={bookContext} />
+      <Outlet context={bookContext}/>
       
       <Footer />
     </>

@@ -19,18 +19,6 @@ Authorization: {{admin.response.body.token}}
 GET {{baseUrl}}/books/1
 Authorization: {{admin.response.body.token}}
 
-### create a book
-POST {{baseUrl}}/books
-Authorization: {{admin.response.body.token}}
-Content-Type: application/json
-
-{
-    "title": "To Kill a Mockingbird",
-    "author": "Harper Lee",
-    "year": 1960,
-    "cover": "mockingbird.jpg"
-}
-
 ### read all books
 GET {{baseUrl}}/books
 
