@@ -4,7 +4,27 @@ import { parse } from "../utils/json";
 const jsonDbPath = path.join(__dirname, "/../data/books.json");
 
 const defaultBooks: Book[] = [
-  
+  {
+      "id": 1,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "year": 1960,
+      "cover": "cover.jpg"
+  },
+  {
+      "id": 2,
+      "title": "1984",
+      "author": "George Orwell",
+      "year": 1949,
+      "cover": "cover.jpg"
+  },
+  {
+      "id": 3,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "year": 1925,
+      "cover": "cover.jpg"
+  }
 ];
 
 function readAllBooks(): Book[] {
